@@ -19,7 +19,7 @@
 import { ref } from 'vue';
 // Remplacez par une image de votre choix.
 // Pour un meilleur effet, utilisez une image de haute qualité (par ex. 1920x1080).
-import backgroundImage from '@/assets/hero-background.jpg'; 
+import backgroundImage from '@/assets/hero-background.webp'; 
 
 </script>
 
