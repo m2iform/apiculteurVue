@@ -1,17 +1,36 @@
 <template>
-  <section class="py-16 bg-soft-beige text-gray-800 px-4">
-    <div class="text-center">
-      <h2 class="text-4xl font-bold text-dark-green mb-12">Nos Ruches & Notre Engagement</h2>
-      <div class="max-w-5xl mx-auto text-lg leading-relaxed">
-        <p class="mb-6">
-          Nos ruches sont stratégiquement implantées dans des environnements préservés de la métropole lilloise et de ses environs. Nous choisissons des lieux riches en biodiversité florale, garantissant ainsi un nectar varié et un miel aux saveurs uniques, tout en offrant un habitat sain et propice au développement de nos colonies d'abeilles.
-        </p>
-        <p class="mb-6">
-          Nous pratiquons une apiculture respectueuse et durable. Cela signifie que nous intervenons le moins possible dans la vie de la colonie, nous n'utilisons aucun traitement chimique et nous veillons à la bonne santé de nos abeilles tout au long de l'année. Notre objectif est de travailler en harmonie avec la nature pour produire un miel de qualité supérieure.
-        </p>
-        <p>
-          Les abeilles sont des actrices essentielles de notre écosystème. En plus de nous offrir ce précieux miel, elles jouent un rôle crucial dans la pollinisation des cultures et des plantes sauvages. En soutenant L'Apiculteur Lillois, vous contribuez à la préservation de ces insectes fascinants et à la biodiversité de notre région.
-        </p>
+  <section class="bg-soft-beige py-20">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <!-- Text Column -->
+        <div class="md:w-1/2 text-left md:order-1">
+          <h2 class="text-sm font-bold uppercase text-amber-600 tracking-widest mb-2">Nos Ruches</h2>
+          <h3 class="text-4xl font-extrabold text-dark-green mb-6">
+            Un Engagement pour la Biodiversité
+          </h3>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            Nos ruches sont implantées dans des environnements préservés de la métropole lilloise, riches en biodiversité florale. Cela garantit un nectar varié et un miel aux saveurs uniques, tout en offrant un habitat sain à nos colonies.
+          </p>
+          <p class="text-gray-700 leading-relaxed mb-8">
+            Nous pratiquons une apiculture durable et respectueuse, sans aucun traitement chimique. En soutenant L'Apiculteur Lillois, vous contribuez à la préservation des abeilles et à la richesse de notre écosystème local.
+          </p>
+          <router-link 
+            to="/apiculteur" 
+            class="inline-block bg-dark-green text-natural-white text-base font-semibold px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300 ease-in-out shadow-lg"
+          >
+            Rencontrer l'apiculteur
+          </router-link>
+        </div>
+
+        <!-- Image Column -->
+        <div class="md:w-1/2 md:order-2">
+          <img 
+            src="@/assets/our-hives-image.jpg" 
+            alt="Ruches dans un champ fleuri" 
+            class="rounded-lg shadow-2xl w-full h-auto object-cover"
+            style="max-height: 450px;"
+          >
+        </div>
       </div>
     </div>
   </section>

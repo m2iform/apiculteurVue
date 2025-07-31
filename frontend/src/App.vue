@@ -26,7 +26,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen bg-soft-beige">
+  <div class="flex flex-col min-h-screen">
     <header class="bg-dark-green p-4 shadow-md text-natural-white sticky top-0 z-30">
       <div class="container mx-auto flex justify-between items-center">
         <RouterLink to="/" class="text-2xl font-bold hover:text-soft-beige transition-colors duration-300">L'Apiculteur Lillois</RouterLink>
@@ -47,7 +47,7 @@ onMounted(async () => {
       </div>
     </header>
 
-    <main class="flex-grow p-5">
+    <main class="flex-grow">
       <RouterView />
     </main>
 
