@@ -1,4 +1,5 @@
 <template>
+  <link rel="preload" as="image" :href="backgroundImage" />
   <div class="relative hero-section bg-fixed bg-cover bg-center flex items-center justify-center" :style="{ backgroundImage: `url(${backgroundImage})` }">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative text-center text-natural-white p-8 z-10">

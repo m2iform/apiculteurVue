@@ -5,7 +5,7 @@
         <!-- Image Column -->
         <div class="md:w-1/2">
           <img 
-            src="@/assets/about-us-image.jpg" 
+            src="@/assets/about-us-image.webp" 
             alt="Apiculteur travaillant avec ses ruches" 
             class="rounded-lg shadow-2xl w-full h-auto object-cover"
             style="max-height: 450px;"

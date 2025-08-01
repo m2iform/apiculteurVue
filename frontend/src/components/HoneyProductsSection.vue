@@ -36,10 +36,10 @@
 import { ref } from 'vue';
 
 // Remplacez les images par les vôtres dans le dossier assets
-import mielFleurs from '@/assets/miel-fleurs.jpg';
-import mielForet from '@/assets/miel-foret.jpg';
-import propolis from '@/assets/propolis.jpg';
-import geleeRoyale from '@/assets/gelee-royale.jpg';
+import mielFleurs from '@/assets/miel-fleurs.webp';
+import mielForet from '@/assets/miel-foret.webp';
+import propolis from '@/assets/propolis.webp';
+import geleeRoyale from '@/assets/gelee-royale.webp';
 
 const products = ref([
   {

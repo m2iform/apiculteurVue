@@ -30,9 +30,9 @@
 import { ref } from 'vue';
 
 // Remplacez les avatars par les vôtres dans le dossier assets
-import avatar1 from '@/assets/avatar1.jpg';
-import avatar2 from '@/assets/avatar2.jpg';
-import avatar3 from '@/assets/avatar3.jpg';
+import avatar1 from '@/assets/avatar1.webp';
+import avatar2 from '@/assets/avatar2.webp';
+import avatar3 from '@/assets/avatar3.webp';
 
 const testimonials = ref([
   {

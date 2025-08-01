@@ -25,7 +25,7 @@
         <!-- Image Column -->
         <div class="md:w-1/2 md:order-2">
           <img 
-            src="@/assets/our-hives-image.jpg" 
+            src="@/assets/our-hives-image.webp" 
             alt="Ruches dans un champ fleuri" 
             class="rounded-lg shadow-2xl w-full h-auto object-cover"
             style="max-height: 450px;"
