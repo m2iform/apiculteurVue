@@ -1,8 +1,8 @@
 <template>
-  <section class="py-20 bg-soft-beige">
+  <section class="py-20 bg-soft-beige shadow-md">
     <div class="px-6 text-center">
-      <h2 class="text-sm font-bold uppercase text-terre tracking-widest mb-3">Nos Trésors</h2>
-      <h3 class="text-4xl font-extrabold text-dark-green mb-16">Miels & Produits de la Ruche</h3>
+      <h2 class="text-3xl font-bold uppercase text-amber-600 tracking-widest mb-3">Nos Trésors</h2>
+      <h3 class="text-3xl font-extrabold text-dark-green mb-16">Miels & Produits de la Ruche</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-6">
         <div 
@@ -16,16 +16,16 @@
           </div>
           <div class="p-6 text-left">
             <h4 class="text-xl font-bold text-dark-green mb-2">{{ product.name }}</h4>
-            <p class="text-gray-600 text-sm mb-4 h-20">{{ product.description }}</p>
+            <p class="text-base text-gray-700 leading-normal mb-4 h-20">{{ product.description }}</p>
             <div class="flex justify-between items-center">
               <span class="text-2xl font-extrabold text-dark-green">{{ product.price }}</span>
-              <button class="bg-dark-green text-natural-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-opacity-90 transition-colors duration-300">Ajouter</button>
+              <button class="bg-amber-500 text-dark-green text-sm font-semibold px-5 py-2 rounded-full hover:bg-amber-400 transition-colors duration-300">Ajouter</button>
             </div>
           </div>
         </div>
       </div>
 
-      <router-link to="/miels" class="mt-16 inline-block bg-transparent border-2 border-dark-green text-dark-green text-lg font-semibold px-8 py-3 rounded-full hover:bg-dark-green hover:text-natural-white transition-all duration-300 ease-in-out">
+      <router-link to="/miels" class="mt-16 inline-block bg-amber-500 border-2 border-amber-500 text-natural-white text-lg font-semibold px-8 py-3 rounded-full hover:bg-amber-400 hover:border-amber-400 transition-all duration-300 ease-in-out">
         Voir tous nos produits
       </router-link>
     </div>
@@ -84,5 +84,20 @@ const products = ref([
 
 .product-card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
 }
 </style>

@@ -9,7 +9,7 @@ export default {
       colors: {
         'dark-green': '#2D5E3E',
         'natural-white': '#FEFEFE',
-        'soft-beige': '#F3E0B5',
+        'soft-beige': '#F5EADF',
       },
     },
   },

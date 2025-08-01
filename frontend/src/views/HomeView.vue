@@ -1,6 +1,6 @@
 <template>
   <HeroSection />
-  <div class="p-5 space-y-5">
+  <div class="">
     <AboutUsSection class="scroll-section" />
     <HoneyProductsSection class="scroll-section" />
     <OurHivesSection class="scroll-section" />
@@ -42,7 +42,7 @@ onMounted(() => {
 .scroll-section {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .scroll-section.is-visible {
@@ -51,8 +51,8 @@ onMounted(() => {
 }
 
 /* Ajoute un décalage pour chaque section pour un effet plus dynamique */
-.scroll-section:nth-child(2) { transition-delay: 0.1s; }
-.scroll-section:nth-child(3) { transition-delay: 0.2s; }
-.scroll-section:nth-child(4) { transition-delay: 0.3s; }
-.scroll-section:nth-child(5) { transition-delay: 0.4s; }
+.scroll-section:nth-child(2) { transition-delay: 0.05s; }
+.scroll-section:nth-child(3) { transition-delay: 0.1s; }
+.scroll-section:nth-child(4) { transition-delay: 0.15s; }
+.scroll-section:nth-child(5) { transition-delay: 0.2s; }
 </style>

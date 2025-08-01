@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, onUnmounted } from 'vue'
 import AppFooter from './components/AppFooter.vue'
 import MobileMenu from './components/MobileMenu.vue'
 
 const isMobileMenuOpen = ref(false);
+const showScrollToTop = ref(false);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
@@ -12,6 +13,14 @@ const toggleMobileMenu = () => {
 
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false;
+};
+
+const handleScroll = () => {
+  showScrollToTop.value = window.scrollY > 200;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 onMounted(async () => {
@@ -22,6 +31,11 @@ onMounted(async () => {
   } catch (error) {
     console.error('Erreur lors de la récupération des données de l\'API:', error);
   }
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
@@ -47,13 +61,25 @@ onMounted(async () => {
       </div>
     </header>
 
-    <main class="flex-grow">
+    <main class="flex-grow bg-soft-beige">
       <RouterView />
     </main>
 
     <AppFooter />
   </div>
   <MobileMenu :is-open="isMobileMenuOpen" @close="closeMobileMenu" />
+
+  <transition name="fade">
+    <button
+      v-if="showScrollToTop"
+      @click="scrollToTop"
+      class="fixed bottom-8 right-8 bg-amber-500 text-dark-green p-4 rounded-full shadow-xl border-2 border-amber-500 hover:bg-amber-400 hover:border-amber-400 transition-all duration-300 ease-in-out z-50 transform hover:scale-110"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+  </transition>
 </template>
 
 <style scoped>
@@ -76,5 +102,12 @@ onMounted(async () => {
 
 .router-link-exact-active {
   @apply text-soft-beige;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>

@@ -1,14 +1,14 @@
 <template>
   <section class="bg-dark-green py-20 text-natural-white">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-sm font-bold uppercase text-amber-500 tracking-widest mb-3">Témoignages</h2>
+      <h2 class="text-3xl font-bold uppercase text-amber-500 tracking-widest mb-3">Témoignages</h2>
       <h3 class="text-4xl font-extrabold mb-16">Ce que nos clients disent de nous</h3>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         <div 
           v-for="testimonial in testimonials" 
           :key="testimonial.id"
-          class="bg-natural-white text-dark-green p-8 rounded-lg shadow-xl flex flex-col"
+          class="bg-natural-white text-dark-green p-8 rounded-lg shadow-md flex flex-col transform hover:scale-105 transition-all duration-300 ease-in-out hover:shadow-lg"
         >
           <div class="flex items-center mb-4">
             <img :src="testimonial.avatar" :alt="testimonial.name" class="w-16 h-16 rounded-full mr-4 object-cover">
@@ -19,7 +19,7 @@
               </div>
             </div>
           </div>
-          <p class="italic text-gray-700 text-left flex-grow">"{{ testimonial.text }}"</p>
+          <p class="italic text-base text-gray-700 text-left flex-grow">"{{ testimonial.text }}"</p>
         </div>
       </div>
     </div>
@@ -57,5 +57,18 @@ const testimonials = ref([
 </script>
 
 <style scoped>
-/* Aucun style spécifique n'est plus nécessaire ici */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
 </style>
