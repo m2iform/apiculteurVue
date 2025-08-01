@@ -1,10 +1,10 @@
 <template>
   <section class="py-20 bg-soft-beige">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-sm font-bold uppercase text-amber-600 tracking-widest mb-3">Nos Trésors</h2>
+    <div class="px-6 text-center">
+      <h2 class="text-sm font-bold uppercase text-terre tracking-widest mb-3">Nos Trésors</h2>
       <h3 class="text-4xl font-extrabold text-dark-green mb-16">Miels & Produits de la Ruche</h3>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-6">
         <div 
           v-for="product in products" 
           :key="product.id"
