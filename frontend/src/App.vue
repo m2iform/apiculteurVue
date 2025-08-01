@@ -26,30 +26,55 @@ onMounted(async () => {
 </script>
 
 <template>
-  <header class="bg-dark-green p-4 shadow-md text-natural-white">
-    <div class="flex justify-between items-center px-5 flex-col md:flex-row md:text-left">
-      <h1 class="text-2xl font-bold">L'Apiculteur Lillois</h1>
-      
-      <!-- Bouton Hamburger pour mobile -->
-      <button @click="toggleMobileMenu" class="md:hidden text-natural-white text-3xl focus:outline-none">
-        &#9776;
-      </button>
+  <div class="flex flex-col min-h-screen">
+    <header class="bg-dark-green p-4 shadow-md text-natural-white sticky top-0 z-30">
+      <div class="container mx-auto flex justify-between items-center">
+        <RouterLink to="/" class="text-2xl font-bold hover:text-soft-beige transition-colors duration-300">L'Apiculteur Lillois</RouterLink>
+        
+        <!-- Navigation Desktop -->
+        <nav class="hidden md:flex items-center space-x-1">
+          <RouterLink to="/" class="nav-link">Accueil</RouterLink>
+          <RouterLink to="/miels" class="nav-link">Nos Miels</RouterLink>
+          <RouterLink to="/ruches" class="nav-link">Nos Ruches</RouterLink>
+          <RouterLink to="/apiculteur" class="nav-link">L'Apiculteur</RouterLink>
+          <RouterLink to="/contact" class="nav-link">Contact</RouterLink>
+        </nav>
 
-      <!-- Navigation Desktop -->
-      <nav class="space-x-4 mt-4 md:mt-0 hidden md:flex">
-        <RouterLink to="/" class="text-natural-white hover:bg-white hover:bg-opacity-10 px-4 py-2 rounded-md transition-colors duration-300">Accueil</RouterLink>
-        <RouterLink to="/miels" class="text-natural-white hover:bg-white hover:bg-opacity-10 px-4 py-2 rounded-md transition-colors duration-300">Nos Miels</RouterLink>
-        <RouterLink to="/ruches" class="text-natural-white hover:bg-white hover:bg-opacity-10 px-4 py-2 rounded-md transition-colors duration-300">Nos Ruches</RouterLink>
-        <RouterLink to="/apiculteur" class="text-natural-white hover:bg-white hover:bg-opacity-10 px-4 py-2 rounded-md transition-colors duration-300">L'Apiculteur</RouterLink>
-        <RouterLink to="/contact" class="text-natural-white hover:bg-white hover:bg-opacity-10 px-4 py-2 rounded-md transition-colors duration-300">Contact</RouterLink>
-      </nav>
-    </div>
-  </header>
+        <!-- Bouton Hamburger pour mobile -->
+        <button @click="toggleMobileMenu" class="md:hidden text-natural-white text-3xl focus:outline-none">
+          &#9776;
+        </button>
+      </div>
+    </header>
 
-  <main class="p-5 bg-soft-beige">
-    <RouterView />
-  </main>
+    <main class="flex-grow">
+      <RouterView />
+    </main>
 
-  <AppFooter />
+    <AppFooter />
+  </div>
   <MobileMenu :is-open="isMobileMenuOpen" @close="closeMobileMenu" />
 </template>
+
+<style scoped>
+.nav-link {
+  @apply relative text-natural-white px-4 py-2 text-sm font-medium rounded-md transition-colors duration-300 tracking-wider;
+}
+
+.nav-link:hover {
+  @apply text-soft-beige;
+}
+
+.nav-link::after {
+  @apply content-[''] absolute w-0 h-0.5 bg-soft-beige bottom-1.5 left-1/2 -translate-x-1/2 transition-all duration-300 rounded-full;
+}
+
+.nav-link:hover::after,
+.router-link-exact-active::after {
+  @apply w-3/5;
+}
+
+.router-link-exact-active {
+  @apply text-soft-beige;
+}
+</style>

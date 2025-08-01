@@ -1,27 +1,31 @@
 <template>
-  <section class="py-16 bg-natural-white text-gray-800 px-4">
-    <div class="text-center">
-      <h2 class="text-4xl font-bold text-dark-green mb-12">Nos Miels & Produits de la Ruche</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-        <!-- Exemple de produit -->
-        <div class="bg-soft-beige p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-          <img src="https://via.placeholder.com/300x200?text=Miel+de+Fleurs" alt="Miel de Fleurs" class="w-full h-48 object-cover rounded-md mb-4">
-          <h3 class="text-2xl font-semibold text-dark-green mb-2">Miel de Fleurs</h3>
-          <p class="text-gray-700">Un miel doux et polyvalent, issu de la diversité florale de nos régions. Idéal pour toutes les occasions.</p>
-        </div>
-        <!-- Ajoutez d'autres produits ici -->
-        <div class="bg-soft-beige p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-          <img src="https://via.placeholder.com/300x200?text=Miel+de+Forêt" alt="Miel de Forêt" class="w-full h-48 object-cover rounded-md mb-4">
-          <h3 class="text-2xl font-semibold text-dark-green mb-2">Miel de Forêt</h3>
-          <p class="text-gray-700">Un miel corsé et boisé, récolté dans les forêts environnantes. Parfait pour les amateurs de saveurs intenses.</p>
-        </div>
-        <div class="bg-soft-beige p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-          <img src="https://via.placeholder.com/300x200?text=Propolis" alt="Propolis" class="w-full h-48 object-cover rounded-md mb-4">
-          <h3 class="text-2xl font-semibold text-dark-green mb-2">Propolis</h3>
-          <p class="text-gray-700">La propolis, trésor de la ruche, reconnue pour ses propriétés bienfaisantes. Disponible sous diverses formes.</p>
+  <section class="py-20 bg-soft-beige">
+    <div class="px-6 text-center">
+      <h2 class="text-sm font-bold uppercase text-terre tracking-widest mb-3">Nos Trésors</h2>
+      <h3 class="text-4xl font-extrabold text-dark-green mb-16">Miels & Produits de la Ruche</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-6">
+        <div 
+          v-for="product in products" 
+          :key="product.id"
+          class="product-card bg-natural-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 ease-in-out"
+        >
+          <div class="relative">
+            <img :src="product.image" :alt="product.name" class="w-full h-56 object-cover">
+            <div class="absolute top-0 right-0 bg-amber-500 text-dark-green font-bold text-xs uppercase px-3 py-1 m-3 rounded-full">{{ product.tag }}</div>
+          </div>
+          <div class="p-6 text-left">
+            <h4 class="text-xl font-bold text-dark-green mb-2">{{ product.name }}</h4>
+            <p class="text-gray-600 text-sm mb-4 h-20">{{ product.description }}</p>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-extrabold text-dark-green">{{ product.price }}</span>
+              <button class="bg-dark-green text-natural-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-opacity-90 transition-colors duration-300">Ajouter</button>
+            </div>
+          </div>
         </div>
       </div>
-      <router-link to="/miels" class="mt-12 inline-block bg-dark-green text-natural-white text-lg font-semibold px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300 ease-in-out shadow-lg">
+
+      <router-link to="/miels" class="mt-16 inline-block bg-transparent border-2 border-dark-green text-dark-green text-lg font-semibold px-8 py-3 rounded-full hover:bg-dark-green hover:text-natural-white transition-all duration-300 ease-in-out">
         Voir tous nos produits
       </router-link>
     </div>
@@ -29,9 +33,56 @@
 </template>
 
 <script setup>
-// Pas de script spécifique nécessaire pour ce composant
+import { ref } from 'vue';
+
+// Remplacez les images par les vôtres dans le dossier assets
+import mielFleurs from '@/assets/miel-fleurs.webp';
+import mielForet from '@/assets/miel-foret.webp';
+import propolis from '@/assets/propolis.webp';
+import geleeRoyale from '@/assets/gelee-royale.webp';
+
+const products = ref([
+  {
+    id: 1,
+    name: 'Miel de Fleurs',
+    description: 'Un miel doux et polyvalent, issu de la diversité florale de nos régions. Idéal pour toutes les occasions.',
+    price: '9,50€',
+    image: mielFleurs,
+    tag: 'Classique'
+  },
+  {
+    id: 2,
+    name: 'Miel de Forêt',
+    description: 'Un miel corsé et boisé, récolté dans les forêts environnantes. Parfait pour les amateurs de saveurs intenses.',
+    price: '11,00€',
+    image: mielForet,
+    tag: 'Caractère'
+  },
+  {
+    id: 3,
+    name: 'Propolis Pure',
+    description: 'La propolis, trésor de la ruche, reconnue pour ses propriétés bienfaisantes. Disponible sous diverses formes.',
+    price: '15,00€',
+    image: propolis,
+    tag: 'Bien-être'
+  },
+  {
+    id: 4,
+    name: 'Gelée Royale',
+    description: 'Un concentré de vitalité, la nourriture exclusive de la reine des abeilles. Un véritable super-aliment.',
+    price: '25,00€',
+    image: geleeRoyale,
+    tag: 'Premium'
+  }
+]);
 </script>
 
 <style scoped>
-/* Styles spécifiques à ce composant si nécessaire */
+.product-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
 </style>

@@ -1,32 +1,58 @@
 <template>
-  <div class="relative h-screen flex items-center justify-center bg-soft-beige">
-    <div class="text-center p-8 bg-natural-white bg-opacity-90 rounded-lg shadow-xl">
-      <h1 class="text-5xl font-extrabold text-dark-green mb-4 leading-tight">
-        L'Apiculteur Lillois
-      </h1>
-      <p class="text-xl text-gray-700 mb-8">
-        Le miel de nos ruches, directement chez vous. Apiculteur passionné dans la métropole lilloise, je vous propose une gamme de miels purs et naturels, récoltés avec soin et respect des abeilles.
-      </p>
-      <router-link to="/miels" class="inline-block bg-dark-green text-natural-white text-lg font-semibold px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300 ease-in-out shadow-lg">
-        Découvrir nos miels
-      </router-link>
-    </div>
+  <HeroSection />
+  <div class="p-5 space-y-5">
+    <AboutUsSection class="scroll-section" />
+    <HoneyProductsSection class="scroll-section" />
+    <OurHivesSection class="scroll-section" />
+    <TestimonialsSection class="scroll-section" />
+    <ContactSection class="scroll-section" />
   </div>
-  <AboutUsSection />
-  <HoneyProductsSection />
-  <OurHivesSection />
-  <TestimonialsSection />
-  <ContactSection />
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+import HeroSection from '../components/HeroSection.vue';
 import AboutUsSection from '../components/AboutUsSection.vue';
 import HoneyProductsSection from '../components/HoneyProductsSection.vue';
 import OurHivesSection from '../components/OurHivesSection.vue';
 import TestimonialsSection from '../components/TestimonialsSection.vue';
 import ContactSection from '../components/ContactSection.vue';
+
+onMounted(() => {
+  const sections = document.querySelectorAll('.scroll-section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1, // Déclenche l'animation quand 10% de la section est visible
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+});
 </script>
 
 <style scoped>
-/* Styles spécifiques à cette vue si nécessaire */
+.scroll-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajoute un décalage pour chaque section pour un effet plus dynamique */
+.scroll-section:nth-child(2) { transition-delay: 0.1s; }
+.scroll-section:nth-child(3) { transition-delay: 0.2s; }
+.scroll-section:nth-child(4) { transition-delay: 0.3s; }
+.scroll-section:nth-child(5) { transition-delay: 0.4s; }
 </style>
